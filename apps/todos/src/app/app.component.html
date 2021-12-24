@@ -1,1 +1,12 @@
-<myorg-nx-welcome></myorg-nx-welcome>
+<!--<myorg-nx-welcome></myorg-nx-welcome>-->
+<div class="wrapper">
+  <div class="container">
+    <div id="welcome">
+      <h1>{{title}}</h1>
+    </div>
+    <myorg-todos [todos]="todos"></myorg-todos>
+    <div>
+      <button id="add-todo" (click)="addTodo()">Click to Add</button>
+    </div>
+  </div>
+</div>

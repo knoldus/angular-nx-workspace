@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Todo} from "@myorg/data";
 
 @Component({
   selector: 'myorg-root',
@@ -6,5 +8,32 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'todos';
+  title = 'Welcome to todos app';
+  // todos: Todo[] = [
+  //   {title: 'Todo 1'},
+  //   {title: 'Todo 2'}
+  // ]
+  todos: Todo[] = [];
+
+  constructor(private http: HttpClient) {
+    this.fetch();
+  }
+
+  fetch() {
+    this.http.get<Todo[]>('/api/todos').subscribe((t) => {
+      this.todos = t;
+    })
+  }
+
+  addTodo() {
+    this.http.post('/api/addTodo', {}).subscribe(() => {
+      this.fetch();
+    })
+  }
+
+  // addTodo() {
+  //   this.todos.push({
+  //     title: `New todo ${Math.floor(Math.random() * 1000)}`
+  //   });
+  // }
 }

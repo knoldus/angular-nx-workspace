@@ -8,5 +8,3 @@ Nx is a wrapper over the angular workspace, which is highly popular in creating 
 
 ###To Run the app : -
 - ``npm run app``
-
-
